@@ -7,7 +7,7 @@ var submitEl = document.querySelector("[type=submit]");
 var startBtnEl = document.querySelector(".startBtn");
 var quizIntroEl = document.querySelector("#quizIntro");
 var index = 0;
-var timeLeft = 10;
+var timeLeft = 70;
 var currentQuestion = 0;
 var alertEl = document.querySelector("#alert");
 var presOptionsEl = document.querySelector(".presOptions");
@@ -132,46 +132,25 @@ function startQuiz() {
     dynDivEl.style.height = "0px";
     if (timeLeft > 0) {
       scoreEl.textContent = "Your score is " + timeLeft + "!";
+    } else {
+      scoreEl.textContent = "Sorry, mate! Better luck next time!";
     }
+  }
 
-    var addSubmitBtn = $(".formSub");
+  var initialsInput = document.querySelector("#initials");
+  var scoreInput = document.querySelector("#score");
+  var submitButton = document.querySelector("#formSub");
 
-    initialsFormEl = {
-      initials: "",
-      timeLeft: "",
+  submitButton.addEventListener("click", function (event) {
+    event.preventDefault();
+
+    var playerInfo = {
+      initials: initialsInput.value,
+      score: scoreInput.value,
     };
 
-    printToTable();
-
-    addSubmitBtn.on("click", function () {
-      window.location = highScore.html;
-      // Submits project form
-      SubmitBtn.on("submit", function (e) {
-        e.preventDefault();
-        initialsFormEl.initials = $('input[name=""]').val();
-        initialsFormEl.timeLeft = $('input[name=""]').val();
-        localStorage.setItem("Form Info", JSON.stringify(initialsFormEl));
-        $('input[name=""]').val("");
-      });
-
-      printToTable();
-
-      function printToTable() {
-        var storedScore = JSON.parse(localStorage.getItem("Form Info"));
-        var newInitials = $("<td>");
-        var newRow = $("<tr>");
-        var newInitials = $("<td>");
-        var newScore = $("<td>");
-        newInitials.text(storedScore.initials);
-        newScore.text(storedScore.timeLeft);
-
-        newRow.append(newInitials);
-        newRow.append(newScore);
-
-        $("tbody").append(newRow);
-      }
-    });
-  }
+    localStorage.setItem("playerInfo", JSON.stringify(playerInfo));
+    // renderMessage();
+  });
 }
-
 startBtnEl.addEventListener("click", startQuiz);
