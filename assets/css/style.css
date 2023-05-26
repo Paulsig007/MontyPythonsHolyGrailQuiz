@@ -1,13 +1,30 @@
+:root {
+  --pinkPurp: #bc3bbd;
+  --pink: #e1b9cb;
+  --purp: #9552a7;
+  --light: #e4c3cf;
+  --darkPurp: #623c68;
+}
+
 body {
-  color: #401112;
-  background-color: #1b351a;
+  color: var(--pink);
+  background-color: var(--darkPurp);
+  border-radius: 30px;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
 .quizContainer {
-  margin-left: 25%;
-  margin-right: 25%;
-  background-color: #5854a4;
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-top: 20px;
+  background-color: var(--purp);
+  border: 5px solid rgb(51, 2, 60);
+  border-radius: 20px;
+  height: 500px;
+}
+
+.quizIntro {
+  border-radius: 20px;
 }
 
 header {
@@ -16,10 +33,11 @@ header {
 }
 
 nav {
-  border: 4px solid #f7f6f9;
+  border: 4px solid var(--light);
+  border-radius: 10px;
   height: 8vh;
   padding: 1vw;
-  color: #f7f6f9;
+  color: var(--light);
 }
 
 .vhsBtn {
@@ -27,11 +45,11 @@ nav {
   cursor: pointer;
   background: none;
   border: none;
-  color: white;
+  color: var(--light);
 }
 
 .vhsBtn:hover {
-  background-color: #2764c4;
+  background-color: var(--pinkPurp);
   color: white;
 }
 
@@ -39,8 +57,21 @@ nav {
   float: right;
 }
 
+.intro {
+  margin: 20px;
+  font-size: 25px;
+}
+
+.instLi {
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 5px;
+  font-size: 20px;
+}
+
 .dynDiv {
   height: 25vw;
+  padding: 10px;
 }
 
 #alert {
@@ -57,12 +88,42 @@ nav {
   transform: translateY(-50%);
 }
 
-li {
-  background-color: #5c95f1;
+.askQuestion {
+  text-align: center;
+}
+
+.dynli {
+  background-color: var(--darkPurp);
   border: 2px solid black;
   border-radius: 6px;
   width: 95%;
   font-size: 20px;
   padding-left: 4px;
   height: 32px;
+  margin-top: 20px;
+}
+
+.endGame {
+  visibility: hidden;
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.end {
+  justify-content: center;
+  align-items: center;
+  margin-left: 20px;
+}
+
+label {
+  font-size: 25px;
+}
+
+.userInitials {
+  padding-right: 10px;
+  margin-left: 20px;
+}
+
+#initials {
+  margin-bottom: 10px;
 }

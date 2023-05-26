@@ -12,13 +12,45 @@
       <nav>
         <button class="vhsBtn">View High Score</button>
         <!--will have link to high score html-->
-        <div class="timer">This is a timer!</div>
+        <div class="timer">Time flies when you're having fun!</div>
         <!--will be a timer counting down, time needs to be deducted when answer is incorrect-->
       </nav>
       <main class="quizContainer">
         <div id="quizIntro">
           <!--this will be the initial slide-->
-          <header class="Intro">Write intro and rules here</header>
+          <header class="intro">
+            Welcome, welcome, welcome, to the one, the only, Monty Python's Holy
+            Grail Quiz, where most of the questions don't really make sense, and
+            the answers, even less so! Here's hoping you liked the movie because
+            you're really going to hate this if you didn't. Here's how to play:
+          </header>
+          <ul>
+            <li class="instLi">Click the start button.</li>
+            <li class="instLi">
+              Answer the questions to the best of your ability.
+            </li>
+            <li class="instLi">
+              Watch out for that scary timer, though, a wrong answer will take
+              away 10 seconds. If the time runs out, take one last guess, just
+              for fun, it's not like it'll hurt any more than it already does.
+            </li>
+            <li class="instLi">
+              When you're finished, if you finished at all, your time left will
+              amount to your score.
+            </li>
+            <li class="instLi">
+              After you're done crying about how poorly you did, you can submit
+              your initials in the tiny form to save all of your lackluster
+              progress.
+            </li>
+            <li class="instLi">
+              Feel free to click the view high scores button to feel even worse
+              about things.
+            </li>
+            <li class="instLi">
+              Best of luck to you, we're not expecting much at all.
+            </li>
+          </ul>
           <button class="startBtn">Click to start</button
           ><!--This button will initiate the main function-->
         </div>
@@ -29,12 +61,12 @@
           <p id="alert"></p>
         </div>
 
-        <!-- <div class="slides">
-          <h1>All Done!</h1>
-          <h2>Your final score was "score"</h2>
+        <div class="endGame">
+          <h1 class="end">All Done!</h1>
+          <h1 class="score end"></h1>
           <form>
-            <label for="userInitials"
-              >Enter your initials to see how you stack up to the rest!</label
+            <label class="userInitials" for="userInitials"
+              >How did you do?</label
             >
             <input
               type="text"
@@ -43,12 +75,13 @@
               maxlength="4"
               size="6"
             />
-            <input type="submit" value="submit" />
+            <input class="formSub" type="submit" value="Initials" <a href="highScore.html"</a>/>
           </form>
-        </div> -->
+        </div>
       </main>
     </div>
 
     <script src="./assets/js/script.js"></script>
   </body>
 </html>
+<!--  -->

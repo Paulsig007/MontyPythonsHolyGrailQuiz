@@ -7,11 +7,13 @@ var submitEl = document.querySelector("[type=submit]");
 var startBtnEl = document.querySelector(".startBtn");
 var quizIntroEl = document.querySelector("#quizIntro");
 var index = 0;
-var timeLeft = 70;
+var timeLeft = 10;
 var currentQuestion = 0;
 var alertEl = document.querySelector("#alert");
 var presOptionsEl = document.querySelector(".presOptions");
-var askQuestionEl = "";
+var askQuestionEl = document.querySelector(".askQuestion");
+var endGameEl = document.querySelector(".endGame");
+var scoreEl = document.querySelector(".score");
 
 var questions = [
   {
@@ -85,11 +87,15 @@ function startQuiz() {
   executeQuestions();
 
   function executeQuestions() {
-    var askQuestionEl = document.querySelector(".askQuestion");
+    if (currentQuestion >= questions.length || timeLeft <= 0) {
+      gameOver();
+      return;
+    }
     askQuestionEl.textContent = questions[currentQuestion].question; //shows the question
     presOptionsEl.textContent = ""; //Helps eliminate options already seen
     for (var i = 0; i < questions[currentQuestion].options.length; i++) {
       var li = document.createElement("li");
+      li.className = "dynli";
       li.textContent = `${i + 1}. ${questions[currentQuestion].options[i]}`;
       li.setAttribute("data-value", questions[currentQuestion].options[i]);
       li.addEventListener("click", selectAnswer);
@@ -112,22 +118,60 @@ function startQuiz() {
       timeLeft = timeLeft - 10;
       executeQuestions();
     }
-    if (executeQuestions === undefined && selectAnswer === undefined) {
-      console.log("you win");
-      return gameOver();
-    }
   }
 
   function gameOver() {
+    clearInterval(quizTimer);
     timerEl.textContent = "Game over!";
     alertEl.textContent = "";
     askQuestionEl.textContent = "";
     presOptionsEl.textContent = "";
+    endGameEl.style.visibility = "visible";
+    endGameEl.style.height = "425px";
+    var dynDivEl = document.querySelector(".dynDiv");
+    dynDivEl.style.height = "0px";
+    if (timeLeft > 0) {
+      scoreEl.textContent = "Your score is " + timeLeft + "!";
+    }
+
+    var addSubmitBtn = $(".formSub");
+
+    initialsFormEl = {
+      initials: "",
+      timeLeft: "",
+    };
+
+    printToTable();
+
+    addSubmitBtn.on("click", function () {
+      window.location = highScore.html;
+      // Submits project form
+      SubmitBtn.on("submit", function (e) {
+        e.preventDefault();
+        initialsFormEl.initials = $('input[name=""]').val();
+        initialsFormEl.timeLeft = $('input[name=""]').val();
+        localStorage.setItem("Form Info", JSON.stringify(initialsFormEl));
+        $('input[name=""]').val("");
+      });
+
+      printToTable();
+
+      function printToTable() {
+        var storedScore = JSON.parse(localStorage.getItem("Form Info"));
+        var newInitials = $("<td>");
+        var newRow = $("<tr>");
+        var newInitials = $("<td>");
+        var newScore = $("<td>");
+        newInitials.text(storedScore.initials);
+        newScore.text(storedScore.timeLeft);
+
+        newRow.append(newInitials);
+        newRow.append(newScore);
+
+        $("tbody").append(newRow);
+      }
+    });
   }
 }
 
-// when an incorrect option is chosen 10 seconds needs to be deducted from the timer. checkAnswers(function)
-
-// EVENTLISTENERS
-// li.addEventListener("click", selectAnswer);
 startBtnEl.addEventListener("click", startQuiz);
