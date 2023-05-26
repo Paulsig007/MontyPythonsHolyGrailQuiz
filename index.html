@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <div>
+      <nav>
+        <button class="vhsBtn">View High Score</button>
+        <!--will have link to high score html-->
+        <div class="timer">This is a timer!</div>
+        <!--will be a timer counting down, time needs to be deducted when answer is incorrect-->
+      </nav>
+      <main class="quizContainer">
+        <div id="quizIntro">
+          <!--this will be the initial slide-->
+          <header class="Intro">Write intro and rules here</header>
+          <button class="startBtn">Click to start</button
+          ><!--This button will initiate the main function-->
+        </div>
+
+        <div class="dynDiv" id="question" data-state="hidden">
+          <h1 class="askQuestion"></h1>
+          <ul class="presOptions"></ul>
+          <p id="alert"></p>
+        </div>
+
+        <!-- <div class="slides">
+          <h1>All Done!</h1>
+          <h2>Your final score was "score"</h2>
+          <form>
+            <label for="userInitials"
+              >Enter your initials to see how you stack up to the rest!</label
+            >
+            <input
+              type="text"
+              id="initials"
+              name="initials"
+              maxlength="4"
+              size="6"
+            />
+            <input type="submit" value="submit" />
+          </form>
+        </div> -->
+      </main>
+    </div>
+
+    <script src="./assets/js/script.js"></script>
+  </body>
+</html>
